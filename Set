@@ -1,0 +1,49 @@
+import math
+
+class Set:
+	def __init__(self, defList = []):
+		self.list = []
+
+	def contains(self, elem):
+		for i in self.list:
+			if i == elem:
+				return True
+				break
+		return False
+
+	def Add(self, elem):
+		if not self.list.contains(elem):
+			self.list.append(elem)
+
+	def Remove(self, elem):
+		if self.list.contains(elem):
+			self.list.remove(elem)
+
+	def Size(self):
+		return len(self.list)
+
+	def __and__(self, SetB):
+		newList = []
+		for i in SetB.list:
+			for  j in self.list:
+				if i == j and not newList.contains(j):
+					newList.append(j)
+		newSet = Set(newList)
+		return newSet
+
+	def __or__(self, SetB)
+		newList = []
+		for i in SetB.list:
+			newList.append(i)
+		for j in self.list:
+			if not newList.contains(j):
+				newList.append(j)
+		newSet = Set(newList)
+		return newSet
+	def __sub__(self, SetB):
+		newList = []
+		for i in self.list:
+			if not SetB.list.contains(i):
+				newList.append(i)
+		newSet = Set(newList)
+		return newSet
